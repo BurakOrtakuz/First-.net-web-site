@@ -1,0 +1,1 @@
+Yapacağım ödev bir otoyıkama ve otopark mağazası için randevu alma ve müşteri yönetimi sitesi olacaktır.
