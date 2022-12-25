@@ -32,8 +32,9 @@ body{
 .nav-link{
     color:#132c33;
 }
-.nav-item:hover{
+.nav-item:hover {
     background-color: #132c33;
+    color:#51c4d3
 }
 .nav-link:hover{
     color:#51c4d3;
@@ -80,21 +81,10 @@ body{
     color:#126e82;
 }
 .link:hover{
-    color:#132c33;
+
 }
-.korosel{
-    height: 400px;
-    overflow: hidden;
-    white-space: nowrap;
-    margin:0px;
-    padding:15px;
-}
-.korosel img{
-    height: 400px;
-    overflow: hidden;
-}
-#ortaokulBurak{
-    object-fit: scale-down;
+.giris:hover {
+
 }
 .resimler2{
     margin:0px;
@@ -118,7 +108,7 @@ body{
     background-color: #d8e3e7;
 }
 .btn:hover{
-    color:#51c4d3; 
+
 }
 .modal-yazı{
     background-color: #132c33;
@@ -148,7 +138,7 @@ body{
         padding-left: 30px;
     }
     .nav-link:hover{
-        color:#51c4d3;
+      
     }
     .footer{
         font-size:15px;
