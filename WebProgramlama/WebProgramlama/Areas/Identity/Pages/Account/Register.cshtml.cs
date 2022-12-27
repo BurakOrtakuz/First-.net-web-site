@@ -38,6 +38,7 @@ namespace WebProgramlama.Areas.Identity.Pages.Account
             ILogger<RegisterModel> logger,
             IEmailSender emailSender)
         {
+
             _userManager = userManager;
             _userStore = userStore;
             _emailStore = GetEmailStore();
@@ -71,6 +72,21 @@ namespace WebProgramlama.Areas.Identity.Pages.Account
         /// </summary>
         public class InputModel
         {
+            [Required]
+            [StringLength(50, ErrorMessage = "İsim 50 karakterden uzun olamaz.")]
+            [Display(Name = "İsim")]
+            public string firstName { get; set; }
+
+            [Required]
+            [StringLength(50, ErrorMessage = "Soyad 50 karakterden uzun olamaz.")]
+            [Display(Name = "Soyisim")]
+            public string lastName { get; set; }
+
+            [Required]
+            [DataType(DataType.PhoneNumber)]
+            [StringLength(13, ErrorMessage = "Telefon numarası giriniz.",MinimumLength =0)]
+            [Display(Name = "Telefon Numarası")]
+            public string phoneNumber { get; set; }
             /// <summary>
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
@@ -85,9 +101,9 @@ namespace WebProgramlama.Areas.Identity.Pages.Account
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
             [Required]
-            [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
+            [StringLength(45, ErrorMessage = "Şifre 45 karakterden uzun olamaz.", MinimumLength = 6)]
             [DataType(DataType.Password)]
-            [Display(Name = "Password")]
+            [Display(Name = "Şifre")]
             public string Password { get; set; }
 
             /// <summary>
@@ -95,8 +111,8 @@ namespace WebProgramlama.Areas.Identity.Pages.Account
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
             [DataType(DataType.Password)]
-            [Display(Name = "Confirm password")]
-            [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+            [Display(Name = "Şifreyi Onaylayın")]
+            [Compare("Password", ErrorMessage = "Şifreniz uyuşmuyor.")]
             public string ConfirmPassword { get; set; }
         }
 
@@ -115,6 +131,9 @@ namespace WebProgramlama.Areas.Identity.Pages.Account
             {
                 var user = CreateUser();
 
+                user.firstName = Input.firstName;
+                user.lastName = Input.lastName;
+                user.PhoneNumber = Input.phoneNumber;
                 await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
                 var result = await _userManager.CreateAsync(user, Input.Password);

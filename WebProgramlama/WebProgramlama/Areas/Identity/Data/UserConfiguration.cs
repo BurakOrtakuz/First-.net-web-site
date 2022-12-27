@@ -8,7 +8,8 @@ namespace WebProgramlama.Areas.Identity.Data
         public void Configure(EntityTypeBuilder<User> builder)
         {
             builder.Property(u => u.firstName).HasMaxLength(50);
-            builder.Property(u => u.lastName).HasMaxLength(50); 
+            builder.Property(u => u.lastName).HasMaxLength(50);
+            builder.Property(u => u.phoneNumber).HasMaxLength(13);
         }
     }
 }
