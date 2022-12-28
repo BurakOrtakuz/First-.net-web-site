@@ -81,13 +81,14 @@ namespace WebProgramlama.Areas.Identity.Pages.Account
             [StringLength(50, ErrorMessage = "Soyad 50 karakterden uzun olamaz.")]
             [Display(Name = "Soyisim")]
             public string lastName { get; set; }
-
+    /*
             [Required]
             [DataType(DataType.PhoneNumber)]
             [StringLength(13, ErrorMessage = "Telefon numarası giriniz.",MinimumLength =0)]
             [Display(Name = "Telefon Numarası")]
+    
             public string phoneNumber { get; set; }
-            /// <summary>
+     */       /// <summary>
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
@@ -133,7 +134,7 @@ namespace WebProgramlama.Areas.Identity.Pages.Account
 
                 user.firstName = Input.firstName;
                 user.lastName = Input.lastName;
-                user.PhoneNumber = Input.phoneNumber;
+                //user.PhoneNumber = Input.phoneNumber;
                 await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
                 var result = await _userManager.CreateAsync(user, Input.Password);

@@ -12,8 +12,8 @@ using WebProgramlama.Data;
 namespace WebProgramlama.Migrations
 {
     [DbContext(typeof(UserDbContext))]
-    [Migration("20221226140717_phone")]
-    partial class phone
+    [Migration("20221227203016_test")]
+    partial class test
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -222,11 +222,6 @@ namespace WebProgramlama.Migrations
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("phoneNumber")
-                        .IsRequired()
-                        .HasMaxLength(13)
-                        .HasColumnType("nvarchar(13)");
 
                     b.HasKey("Id");
 
