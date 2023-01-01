@@ -9,7 +9,7 @@ namespace WebProgramlama.Areas.Identity.Data
         {
             builder.Property(u => u.firstName).HasMaxLength(50);
             builder.Property(u => u.lastName).HasMaxLength(50);
-            //builder.Property(u => u.phoneNumber).HasMaxLength(13);
+            builder.Property(u => u.PhoneNumber).HasMaxLength(13);
         }
     }
 }

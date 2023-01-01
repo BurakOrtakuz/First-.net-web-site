@@ -12,8 +12,8 @@ using WebProgramlama.Data;
 namespace WebProgramlama.Migrations
 {
     [DbContext(typeof(UserDbContext))]
-    [Migration("20221227203016_test")]
-    partial class test
+    [Migration("20230101114821_Telefon2")]
+    partial class Telefon2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -198,7 +198,8 @@ namespace WebProgramlama.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PhoneNumber")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(13)
+                        .HasColumnType("nvarchar(13)");
 
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
