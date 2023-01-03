@@ -114,13 +114,28 @@ namespace WebProgramlama.Areas.Identity.Pages.Account
                 // This doesn't count login failures towards account lockout
                 // To enable password failures to trigger account lockout, set lockoutOnFailure: true
                 var result = await _signInManager.PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: false);
+                var user = await _signInManager.UserManager.FindByNameAsync(Input.Email);
+                if (user == null)
+                {
+                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                    return Page();
+                }
                 if (result.Succeeded)
                 {
-                    var claims = new Claim[]
+                    var claims = new List<Claim>
                     {
-                        new Claim("amr","pmr"),
-                        new Claim("Admin","1")
+                        new Claim("amr","pmr")
                     };
+                    var roles = await _signInManager.UserManager.GetRolesAsync(user);
+
+                    if (roles.Any())
+                    {
+                        //"Manager,User"
+                        var roleClaim = string.Join(",", roles);
+                        claims.Add(new Claim("Admin", roleClaim));
+                    }
+
+                    await _signInManager.SignInWithClaimsAsync(user, Input.RememberMe, claims);
                     _logger.LogInformation("User logged in.");
                     return LocalRedirect(returnUrl);
                 }

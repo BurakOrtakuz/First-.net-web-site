@@ -41,7 +41,7 @@ namespace WebProgramlama.Migrations
 VALUES 
 (N'{User1Id}', N'Admin', N'Admin', N'G191210041@sakarya.edu.tr', N'G191210041@SAKARYA.EDU.TR', 
 N'G191210041@sakarya.edu.tr', N'G191210041@SAKARYA.EDU.TR', 0, 
-N'AQAAAAEAACcQAAAAEDGQ5wwj6Iz0lXHIZ5IwuvgSO88jrSBT1etWcDYjJN5CBNDKvddZcEeixYBYmcdFag==', 
+N'sau', 
 N'YUPAFWNGZI2UC5FOITC7PX5J7XZTAZAA', N'8e150555-a20d-4610-93ff-49c5af44f749', NULL, 0, 0, NULL, 1, 0)");
 
             migrationBuilder.Sql(

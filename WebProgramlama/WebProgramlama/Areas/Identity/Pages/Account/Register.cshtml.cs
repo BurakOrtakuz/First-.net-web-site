@@ -72,17 +72,17 @@ namespace WebProgramlama.Areas.Identity.Pages.Account
         /// </summary>
         public class InputModel
         {
-            [Required]
+            [Required(ErrorMessage ="Bu alan zorunludur")]
             [StringLength(50, ErrorMessage = "İsim 50 karakterden uzun olamaz.")]
             [Display(Name = "İsim")]
             public string firstName { get; set; }
 
-            [Required]
+            [Required(ErrorMessage = "Bu alan zorunludur")]
             [StringLength(50, ErrorMessage = "Soyad 50 karakterden uzun olamaz.")]
             [Display(Name = "Soyisim")]
             public string lastName { get; set; }
     
-            [Required]
+            [Required(ErrorMessage = "Bu alan zorunludur")]
             [DataType(DataType.PhoneNumber)]
             [StringLength(13, ErrorMessage = "Telefon numarası giriniz.",MinimumLength =0)]
             [Display(Name = "Telefon Numarası")]
@@ -92,7 +92,7 @@ namespace WebProgramlama.Areas.Identity.Pages.Account
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
-            [Required]
+            [Required(ErrorMessage = "Bu alan zorunludur")]
             [EmailAddress]
             [Display(Name = "Email")]
             public string Email { get; set; }
@@ -101,8 +101,8 @@ namespace WebProgramlama.Areas.Identity.Pages.Account
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
-            [Required]
-            [StringLength(45, ErrorMessage = "Şifre 45 karakterden uzun olamaz.", MinimumLength = 6)]
+            [Required(ErrorMessage = "Bu alan zorunludur")]
+            [StringLength(45, ErrorMessage = "Şifre 45 karakterden uzun 6 karakterden kısa olamaz.", MinimumLength = 6)]
             [DataType(DataType.Password)]
             [Display(Name = "Şifre")]
             public string Password { get; set; }
@@ -111,6 +111,7 @@ namespace WebProgramlama.Areas.Identity.Pages.Account
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
+            [Required(ErrorMessage = "Bu alan zorunludur")]
             [DataType(DataType.Password)]
             [Display(Name = "Şifreyi Onaylayın")]
             [Compare("Password", ErrorMessage = "Şifreniz uyuşmuyor.")]
@@ -137,6 +138,7 @@ namespace WebProgramlama.Areas.Identity.Pages.Account
                 user.PhoneNumber = Input.phoneNumber;
                 await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
+                
                 var result = await _userManager.CreateAsync(user, Input.Password);
 
                 if (result.Succeeded)
