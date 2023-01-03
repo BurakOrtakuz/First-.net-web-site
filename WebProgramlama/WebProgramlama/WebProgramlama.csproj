@@ -7,6 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\resimler\Kuaforalanı.jfif" />
+    <None Include="wwwroot\resimler\Otopark.jfif" />
+    <None Include="wwwroot\resimler\Otopark2.jfif" />
+    <None Include="wwwroot\resimler\OtoYıkama.jfif" />
+    <None Include="wwwroot\resimler\OtoYıkama2.jfif" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.12" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.12" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.12" />

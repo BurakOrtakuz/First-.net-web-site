@@ -253,6 +253,26 @@
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
+      "Id": "D:\\Work\\Object_Oriented_Programing_and_Designing_Project\\WebProgramlama\\WebProgramlama\\WebProgramlama\\wwwroot\\resimler\\Kuaforalanı.jfif",
+      "PackagePath": "staticwebassets\\resimler\\Kuaforalanı.jfif"
+    },
+    {
+      "Id": "D:\\Work\\Object_Oriented_Programing_and_Designing_Project\\WebProgramlama\\WebProgramlama\\WebProgramlama\\wwwroot\\resimler\\OtoYıkama.jfif",
+      "PackagePath": "staticwebassets\\resimler\\OtoYıkama.jfif"
+    },
+    {
+      "Id": "D:\\Work\\Object_Oriented_Programing_and_Designing_Project\\WebProgramlama\\WebProgramlama\\WebProgramlama\\wwwroot\\resimler\\OtoYıkama2.jfif",
+      "PackagePath": "staticwebassets\\resimler\\OtoYıkama2.jfif"
+    },
+    {
+      "Id": "D:\\Work\\Object_Oriented_Programing_and_Designing_Project\\WebProgramlama\\WebProgramlama\\WebProgramlama\\wwwroot\\resimler\\Otopark.jfif",
+      "PackagePath": "staticwebassets\\resimler\\Otopark.jfif"
+    },
+    {
+      "Id": "D:\\Work\\Object_Oriented_Programing_and_Designing_Project\\WebProgramlama\\WebProgramlama\\WebProgramlama\\wwwroot\\resimler\\Otopark2.jfif",
+      "PackagePath": "staticwebassets\\resimler\\Otopark2.jfif"
+    },
+    {
       "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.WebProgramlama.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },

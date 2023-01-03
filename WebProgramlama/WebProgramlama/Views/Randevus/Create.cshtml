@@ -1,0 +1,52 @@
+﻿@model WebProgramlama.Models.Randevu
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Randevu</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="randevuZamani" class="control-label"></label>
+                <input asp-for="randevuZamani" class="form-control" />
+                <span asp-validation-for="randevuZamani" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="plaka" class="control-label"></label>
+                <input asp-for="plaka" class="form-control" />
+                <span asp-validation-for="plaka" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="islemId" class="control-label" asp-items="ViewBag.IslemId"></label>
+                <select asp-for="islemId" class="form-control" asp-items="ViewBag.IslemId">
+                    @if (TempData["islem"] != null)
+                    {
+                        var islem = TempData["islem"] as List<Islem>;
+                        
+                            @foreach (var islemler in islem)
+                            {
+                                <option value=@islemler.IslemId>@islemler.IslemAdi</option>
+                            }
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Listeye dön</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

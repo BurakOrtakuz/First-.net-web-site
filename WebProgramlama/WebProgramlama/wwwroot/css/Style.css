@@ -42,6 +42,9 @@ body{
 .nav-link:hover{
     color:#51c4d3;
 }
+.form-inline:hover {
+    color: #51c4d3;
+}
 .navbar-brand:hover{
     background-color: #132c33;
     color:#51c4d3;

@@ -15,6 +15,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using WebProgramlama.Areas.Identity.Data;
+using System.Security.Claims;
 
 namespace WebProgramlama.Areas.Identity.Pages.Account
 {
@@ -81,7 +82,7 @@ namespace WebProgramlama.Areas.Identity.Pages.Account
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
-            [Display(Name = "Remember me?")]
+            [Display(Name = "Beni Hatırla?")]
             public bool RememberMe { get; set; }
         }
 
@@ -115,6 +116,11 @@ namespace WebProgramlama.Areas.Identity.Pages.Account
                 var result = await _signInManager.PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: false);
                 if (result.Succeeded)
                 {
+                    var claims = new Claim[]
+                    {
+                        new Claim("amr","pmr"),
+                        new Claim("Admin","1")
+                    };
                     _logger.LogInformation("User logged in.");
                     return LocalRedirect(returnUrl);
                 }

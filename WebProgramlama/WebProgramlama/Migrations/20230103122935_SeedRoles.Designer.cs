@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebProgramlama.Data;
 
@@ -11,9 +12,10 @@ using WebProgramlama.Data;
 namespace WebProgramlama.Migrations
 {
     [DbContext(typeof(UserDbContext))]
-    partial class UserDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230103122935_SeedRoles")]
+    partial class SeedRoles
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -235,6 +237,52 @@ namespace WebProgramlama.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
+            modelBuilder.Entity("WebProgramlama.Models.Islem", b =>
+                {
+                    b.Property<string>("IslemId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("IslemAdi")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("IslemId");
+
+                    b.ToTable("Islem");
+                });
+
+            modelBuilder.Entity("WebProgramlama.Models.Randevu", b =>
+                {
+                    b.Property<int>("randevuId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("randevuId"), 1L, 1);
+
+                    b.Property<string>("islemId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("plaka")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("randevuZamani")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("userId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("randevuId");
+
+                    b.HasIndex("islemId");
+
+                    b.HasIndex("userId");
+
+                    b.ToTable("Randevu");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -284,6 +332,25 @@ namespace WebProgramlama.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("WebProgramlama.Models.Randevu", b =>
+                {
+                    b.HasOne("WebProgramlama.Models.Islem", "Islem")
+                        .WithMany()
+                        .HasForeignKey("islemId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("WebProgramlama.Areas.Identity.Data.User", "User")
+                        .WithMany()
+                        .HasForeignKey("userId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Islem");
+
+                    b.Navigation("User");
                 });
 #pragma warning restore 612, 618
         }
