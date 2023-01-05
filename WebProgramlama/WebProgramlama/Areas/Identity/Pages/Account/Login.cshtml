@@ -9,7 +9,7 @@
     <div class="col-md-4">
         <section>
             <form id="account" method="post">
-                <h2>Giriş Yap.</h2>
+                <h2>Giriş Yap</h2>
                 <hr />
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-floating">
@@ -34,9 +34,6 @@
                     <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary">Giriş Yap</button>
                 </div>
                 <div>
-                    <p>
-                        <a id="forgot-password" asp-page="./ForgotPassword">Şifremi unuttum?</a>
-                    </p>
                     <p>
                         <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Kayıt ol</a>
                     </p>
